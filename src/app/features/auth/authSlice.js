@@ -13,31 +13,30 @@ const initialState = {
 
 export const createUser = createAsyncThunk("auth/createUser", async ({ email, password }) => {
     const data = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(data)
     return data.user.email;
 })
 export const loginUser = createAsyncThunk("auth/loginUser", async ({ email, password }) => {
     const data = await signInWithEmailAndPassword(auth, email, password);
-    console.log(data)
     return data.user.email;
 })
 export const googleLogin = createAsyncThunk("auth/googleLogin", async () => {
     const googleProvider = new GoogleAuthProvider()
     const data = await signInWithPopup(auth, googleProvider);
-    console.log(data)
     return data.user.email;
 })
-export const logOut = createAsyncThunk("auth/logOut", async ({ email, password }) => {
-
+export const logOut = createAsyncThunk("auth/logOut", async () => {
     const data = await signOut(auth);
-    console.log(data)
-    return data.user.email;
+    return data;
 })
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
+    reducers: {
+        setUser: (state, action) => {
+            state.email = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(createUser.pending, (state) => {
             state.email = "";
@@ -120,6 +119,7 @@ const authSlice = createSlice({
                 state.isLoading = false;
                 state.isError = false;
                 state.error = ""
+                toast.success("Successfully sign out")
             })
             .addCase(logOut.rejected, (state, action) => {
                 state.email = "";
@@ -132,4 +132,5 @@ const authSlice = createSlice({
     }
 })
 
+export const { setUser } = authSlice.actions;
 export default authSlice.reducer;

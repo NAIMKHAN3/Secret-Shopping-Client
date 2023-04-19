@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-import { FaAlignJustify, FaUserPlus } from 'react-icons/fa'
+import { FaUserPlus } from 'react-icons/fa'
 import { ImCross } from 'react-icons/im'
 import { FiLogIn } from 'react-icons/fi'
 import { AiOutlineMenu } from 'react-icons/ai'
+import { CgLogOut } from 'react-icons/cg'
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { logOut } from '../app/features/auth/authSlice';
 
 
 const Navbar = () => {
+    const { email } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState(false);
     const toggleIsOpen = () => {
         setIsOpen(value => !value)
+    }
+
+    const signOut = () => {
+        dispatch(logOut())
     }
     const navItem = 'text-sm md:ml-4 text-white mb-1 hover:bg-[#008000] px-5 py-2 rounded-full cursor-pointer font-semibold transition duration-500'
     const item = <ul className='flex md:items-center flex-col lg:flex-row md:justify-center'>
@@ -27,8 +36,13 @@ const Navbar = () => {
     return (
         <div>
             <div className='flex justify-end px-5 md:px-10 py-1'>
-                <Link to="/login"><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><FiLogIn /></span> Login</button></Link>
-                <Link to='/register'><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><FaUserPlus /></span> Register</button></Link>
+                {
+                    email ? <button onClick={signOut} className='font-bold text-sm bg-[#bf0603] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><CgLogOut /></span>Sign Out</button> :
+                        <><Link to="/login"><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><FiLogIn /></span> Login</button></Link>
+                            <Link to='/register'><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><FaUserPlus /></span> Register</button></Link></>
+                }
+
+
 
             </div>
             <div className='py-4  w-full bg-[#333533] transition duration-700' data-aos="fade-down" data-aos-duration="1000">

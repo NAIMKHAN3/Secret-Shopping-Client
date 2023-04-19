@@ -31,9 +31,12 @@ const Navbar = () => {
                 <Link to='/register'><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><FaUserPlus /></span> Register</button></Link>
 
             </div>
-            <div className='py-4  w-full bg-[#333533] ' data-aos="fade-down" data-aos-duration="1000">
+            <div className='py-4  w-full bg-[#333533] transition duration-700' data-aos="fade-down" data-aos-duration="1000">
                 <div className='flex justify-evenly items-center'>
-                    <h1 className='hidden lg:block text-white text-xl font-semibold'>SECURE <span className='text-[#0ebd0e]'>SHOP</span></h1>
+                    <div className='flex justify-center items-center'>
+                        <img className='w-12 hidden lg:block mr-2' src="https://i.ibb.co/P1HrRh5/logo-removebg-preview.png" alt="" />
+                        <h1 className='hidden lg:block text-white text-xl font-semibold'>SECURE <span className='text-[#0ebd0e]'>SHOP</span></h1>
+                    </div>
                     <div className='hidden lg:block'>
 
                         {
@@ -41,8 +44,10 @@ const Navbar = () => {
                         }
                     </div>
                 </div>
-                <div className='lg:hidden flex justify-between mx-5'>
-                    <div> <h1 className=' text-white text-lg font-semibold'>SECURE <span className='text-[#0ebd0e]'>SHOP</span></h1></div>
+                <div className='lg:hidden flex justify-between mx-5 transition duration-700'>
+                    <div className='flex justify-center items-center'>
+                        <img className='w-12 mr-2' src="https://i.ibb.co/P1HrRh5/logo-removebg-preview.png" alt="" />
+                        <h1 className=' text-white text-lg font-semibold'>SECURE <span className='text-[#0ebd0e]'>SHOP</span></h1></div>
                     {
                         isOpen ? <div><p className='flex justify-center items-center bg-[#008000] text-white px-2 py-1 cursor-pointer rounded' onClick={toggleIsOpen}> <span><ImCross className='text-xs  mr-1' /></span> Menu</p></div> :
                             <div><p className='flex justify-center items-center bg-white px-2 py-1 rounded cursor-pointer' onClick={toggleIsOpen}><span><AiOutlineMenu className='text-xs mr-1' /></span> Menu</p></div>
@@ -50,9 +55,9 @@ const Navbar = () => {
 
 
                 </div>
-                <div className='lg:hidden '>
+                <div className='lg:hidden  '>
                     {
-                        isOpen && <div className=' rounded-md p-3'>
+                        isOpen && <div className=' rounded-md p-3 transition duration-700'>
                             {
                                 item
                             }

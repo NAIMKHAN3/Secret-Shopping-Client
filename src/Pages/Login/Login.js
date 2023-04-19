@@ -1,12 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { googleLogin, loginUser } from '../../app/features/auth/authSlice';
 
 const Login = () => {
+    const dispatch = useDispatch();
+
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
-        console.log(data)
+
+    const onSubmit = ({ email, password }) => {
+        dispatch(loginUser({ email, password }))
     };
+
+    const handleGoogle = () => {
+        dispatch(googleLogin())
+    }
     return (
         <div className='w-full md:w-1/3 mx-auto my-10 p-5 border rounded border-[#008000]'>
             <h1 className='text-center text-3xl font-semibold text-[#008000] my-10'>Login User</h1>
@@ -29,7 +38,7 @@ const Login = () => {
             <hr className='border-t-2 my-5' />
             <div className='flex justify-evenly items-center hover:border-[#333533] border border-[#07b900] rounded my-3 py-1 px-3 hover:bg-[#333533] hover:text-white transition duration-500'>
                 <img className='w-12 h-12' src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png" alt="" />
-                <button className='w-full text-center  font-semibold text-lg '>Continue With Google</button>
+                <button onClick={handleGoogle} className='w-full text-center  font-semibold text-lg '>Continue With Google</button>
             </div>
         </div>
     );

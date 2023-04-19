@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className='grid grid-cols-1 md:grid-cols-5 lg:grid-cols-9 gap-5'>
                     <div className='col-span-3'>
                         <div className='flex items-center'>
-                            <img className='w-12 hidden lg:block mr-2' src="https://i.ibb.co/P1HrRh5/logo-removebg-preview.png" alt="" />
+                            <img className='w-12 mr-2' src="https://i.ibb.co/P1HrRh5/logo-removebg-preview.png" alt="" />
                             <h1 className=' text-white text-xl font-semibold'>SECURE <span className='text-[#008000]'>SHOP</span></h1>
                         </div>
                         <p className='text-white my-5 font-semibold'>Secure Shop started life as a business lines and calls provider in Birmingham City Centre, we moved our offices to Halesowen in 2012. We expanded over the following years to cover all forms of business communications and gained customers from all over the UK.</p>

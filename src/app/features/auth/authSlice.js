@@ -85,8 +85,6 @@ const authSlice = createSlice({
                 toast.error(action.error.message)
             })
             .addCase(googleLogin.pending, (state) => {
-                state.email = "";
-                state.role = "";
                 state.isLoading = true;
                 state.isError = false;
                 state.error = ""

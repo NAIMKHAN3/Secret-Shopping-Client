@@ -3,19 +3,29 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { createUser, googleLogin } from '../../app/features/auth/authSlice';
 import { useDispatch } from 'react-redux'
+import { useRegisterUserMutation } from '../../app/features/user/userApi';
 
 
 const Register = () => {
     const dispatch = useDispatch()
-
+    const [registerUser, { data }] = useRegisterUserMutation();
+    console.log(data)
     const { register, handleSubmit } = useForm();
 
     const onSubmit = ({ name, email, password }) => {
         dispatch(createUser({ email, password }))
+            .then(() => {
+                registerUser({ name, email })
+            })
     };
 
-    const handleGoogle = () => {
+    const handleGoogle = async () => {
         dispatch(googleLogin())
+
+    }
+
+    if (data?.token) {
+        localStorage.setItem('token', data?.token)
     }
 
     return (

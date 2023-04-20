@@ -26,7 +26,7 @@ const Navbar = () => {
         <li className={`${navItem}`}>Home</li>
         <li className={`${navItem}`}>About</li>
         <li className={`${navItem}`}>Services</li>
-        <li className={`${navItem}`}>Downloads</li>
+        <Link to='/deshboard' className={`${navItem}`}>Deshboard</Link>
         <li className={`${navItem}`}>Training</li>
         <li className={`${navItem}`}>Billing</li>
         <li className={`${navItem}`}>Contact</li>

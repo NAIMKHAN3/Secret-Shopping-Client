@@ -3,19 +3,31 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { googleLogin, loginUser } from '../../app/features/auth/authSlice';
+import { useRegisterUserMutation } from '../../app/features/user/userApi';
 
 const Login = () => {
     const dispatch = useDispatch();
-
+    const [registerUser, { data }] = useRegisterUserMutation();
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = ({ email, password }) => {
-        dispatch(loginUser({ email, password }))
+    const onSubmit = async ({ email, password }) => {
+        const { payload } = await dispatch(loginUser({ email, password }))
+        if (payload) {
+            registerUser({ email: payload })
+        }
     };
 
-    const handleGoogle = () => {
-        dispatch(googleLogin())
+    const handleGoogle = async () => {
+        const { payload } = await dispatch(googleLogin())
+        if (payload) {
+            registerUser({ email: payload })
+        }
     }
+
+    if (data?.token) {
+        localStorage.setItem('token', data?.token)
+    }
+
     return (
         <div className='w-full md:w-1/3 mx-auto my-10 p-5 border rounded border-[#008000]'>
             <h1 className='text-center text-3xl font-semibold text-[#008000] my-10'>Login User</h1>

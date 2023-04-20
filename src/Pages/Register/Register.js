@@ -20,7 +20,10 @@ const Register = () => {
     };
 
     const handleGoogle = async () => {
-        dispatch(googleLogin())
+        const { payload } = await dispatch(googleLogin())
+        if (payload) {
+            registerUser({ email: payload })
+        }
 
     }
 

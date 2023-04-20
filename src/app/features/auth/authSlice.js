@@ -68,8 +68,8 @@ const authSlice = createSlice({
                 state.isError = false;
                 state.error = ""
             })
-            .addCase(loginUser.fulfilled, (state, action) => {
-                state.email = action.payload;
+            .addCase(loginUser.fulfilled, (state, { payload }) => {
+                state.email = payload;
                 state.role = "user";
                 state.isLoading = false;
                 state.isError = false;

@@ -34,7 +34,7 @@ const Navbar = () => {
 
     </ul>
     return (
-        <div>
+        <div className='mb-10'>
             <div className='flex justify-end px-5 md:px-10 py-1'>
                 {
                     email ? <button onClick={signOut} className='font-bold text-sm bg-[#bf0603] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><CgLogOut /></span>Sign Out</button> :

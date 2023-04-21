@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Deshboard from "../Layout/Deshboard/Deshboard";
+import AddProduct from "../Pages/AddProduct/AddProduct";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/deshboard', element: <Deshboard />
+        path: '/deshboard', element: <Deshboard />, children: [
+            {
+                path: '/deshboard/add-product', element: <AddProduct />
+            }
+        ]
     }
 ])
 

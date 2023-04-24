@@ -20,7 +20,7 @@ function App() {
     })
   })
   return (
-    <div>
+    <div className='bg-neutral-200'>
       <Toaster />
       <RouterProvider router={router}></RouterProvider>
     </div>

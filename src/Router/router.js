@@ -4,10 +4,14 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Deshboard from "../Layout/Deshboard/Deshboard";
 import AddProduct from "../Pages/AddProduct/AddProduct";
+import Products from "../Pages/Products/Products";
 
 const router = createBrowserRouter([
     {
         path: '/', element: <Main />, children: [
+            {
+                path: '/all-products', element: <Products />
+            },
             {
                 path: '/register', element: <Register />
             },

@@ -24,7 +24,7 @@ const Navbar = () => {
     const item = <ul className='flex md:items-center flex-col lg:flex-row md:justify-center'>
 
         <li className={`${navItem}`}>Home</li>
-        <li className={`${navItem}`}>About</li>
+        <Link to='/all-products' className={`${navItem}`}>All Products</Link>
         <li className={`${navItem}`}>Services</li>
         <Link to='/deshboard' className={`${navItem}`}>Deshboard</Link>
         <li className={`${navItem}`}>Training</li>

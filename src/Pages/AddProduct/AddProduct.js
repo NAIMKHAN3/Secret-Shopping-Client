@@ -10,7 +10,7 @@ const AddProduct = () => {
     const imgbbKey = process.env.REACT_APP_IMGBB_KEY;
 
     const onSubmit = (data) => {
-        const { image, name, price, discound, cetegory, description } = data;
+        const { image, price, discound, brand, model, ram, rom, color, processor, battery, fastCharging, system, screen, camera, touchScreen } = data;
         const imageFile = image[0];
 
         const formData = new FormData();
@@ -22,15 +22,25 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // const product = {
-                //     name,
-                //     cetegory,
-                //     price,
-                //     discound,
-                //     description,
-                //     image: data.data?.display_url
-                // };
-                // postProduct(product)
+
+                const product = {
+                    brand,
+                    model,
+                    ram,
+                    rom,
+                    color,
+                    processor,
+                    battery,
+                    fastCharging,
+                    system,
+                    screen,
+                    camera,
+                    touchScreen,
+                    price,
+                    discound,
+                    image: data.data?.display_url
+                };
+                postProduct(product)
             })
     }
 
@@ -44,11 +54,11 @@ const AddProduct = () => {
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                     <div className='my-2 w-full'>
                         <label className='font-semibold'>Select Brand</label>
-                        <select defaultValue="i-phone" className='w-full border-2 p-2 my-2 rounded' {...register("cetegory")} placeholder='Select Brand'>
-                            <option value='i-phone'>i-Phone</option>
+                        <select className='w-full border-2 p-2 my-2 rounded' defaultValue="iphone" {...register("brand")} placeholder='Select Brand'>
+                            <option value='iphone'>iPhone</option>
                             <option value='Vivo'>Vivo</option>
                             <option value='Oppo'>Oppo</option>
-                            <option value='Symphony'>Symphony</option>
+                            <option value='samsung'>Samsung</option>
                             <option value='Xiaomi'>Xiaomi</option>
                             <option value='Huawei'>Huawei</option>
                         </select>
@@ -79,7 +89,7 @@ const AddProduct = () => {
                     </div>
                     <div className='my-2 w-full'>
                         <label className='font-semibold'>Fast Charging</label>
-                        <input type='text' className='w-full border-2 p-2 my-2 rounded' {...register("fast-charging")} placeholder='Fast Charging' required />
+                        <input type='text' className='w-full border-2 p-2 my-2 rounded' {...register("fastCharging")} placeholder='Fast Charging' required />
                     </div>
                     <div className='my-2 w-full'>
                         <label className='font-semibold'>Operating System</label>
@@ -95,7 +105,7 @@ const AddProduct = () => {
                     </div>
                     <div className='my-2 w-full'>
                         <label className='font-semibold'>Touch Screen</label>
-                        <input type='text' className='w-full border-2 p-2 my-2 rounded' {...register("touch-screen")} placeholder='Touch Screen' required />
+                        <input type='text' className='w-full border-2 p-2 my-2 rounded' {...register("touchScreen")} placeholder='Touch Screen' required />
                     </div>
                     <div className='my-2 w-full'>
                         <label className='font-semibold'>Price</label>

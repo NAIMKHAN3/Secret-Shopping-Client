@@ -19,7 +19,24 @@ const productApi = apiSlice.injectEndpoints({
                 url: `/product/${id}`,
             }),
         }),
+        getCardProductById: builder.query({
+            query: (id) => ({
+                url: `/card-product/${id}`,
+            }),
+        }),
+        getAddToCardProducts: builder.query({
+            query: (email) => ({
+                url: `/card-products/${email}`,
+            }),
+        }),
+        addToCard: builder.mutation({
+            query: (product) => ({
+                url: '/add-to-card',
+                method: 'POST',
+                body: product
+            })
+        })
     }),
 });
 
-export const { useAddProductMutation, useGetProductsQuery, useGetProductByIdQuery } = productApi;
+export const { useAddProductMutation, useGetProductsQuery, useGetCardProductByIdQuery, useGetAddToCardProductsQuery, useGetProductByIdQuery, useAddToCardMutation } = productApi;

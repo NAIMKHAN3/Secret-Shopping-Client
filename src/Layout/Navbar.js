@@ -27,7 +27,7 @@ const Navbar = () => {
         <Link to='/all-products' className={`${navItem}`}>All Products</Link>
         <li className={`${navItem}`}>Services</li>
         <Link to='/deshboard' className={`${navItem}`}>Deshboard</Link>
-        <li className={`${navItem}`}>Training</li>
+        <Link to='/card' className={`${navItem}`}>Card</Link>
         <li className={`${navItem}`}>Billing</li>
         <li className={`${navItem}`}>Contact</li>
 

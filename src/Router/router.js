@@ -6,6 +6,8 @@ import Deshboard from "../Layout/Deshboard/Deshboard";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import Products from "../Pages/Products/Products";
 import ProductDetails from "../Pages/Products/ProductDetails";
+import Card from "../Pages/Card/Card";
+import CardDetails from "../Pages/Card/CardDetails";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +23,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/product-details/:_id', element: <ProductDetails />
-            }
+            },
+            {
+                path: '/card', element: <Card />
+            },
+            {
+                path: '/card-details/:_id', element: <CardDetails />
+            },
         ]
     },
     {

@@ -1,67 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useAddToCardMutation, useGetProductByIdQuery } from '../../app/features/products/productApi';
+import { useGetCardProductByIdQuery } from '../../app/features/products/productApi';
 import { useSelector } from 'react-redux';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { toast } from 'react-hot-toast';
 
-const ProductDetails = () => {
+const CardDetails = () => {
     const { _id } = useParams();
-    const { data: product } = useGetProductByIdQuery(_id)
+    const { data: product } = useGetCardProductByIdQuery(_id)
     const { data } = product || {};
     const email = useSelector(state => state.auth.email);
-    const [addToCard, { data: addCard }] = useAddToCardMutation();
-    const [quantity, setQuantity] = useState(1);
     const originPrice = parseInt(data?.price)
     const discoundPrice = originPrice - (originPrice * (parseInt(data?.discound) / 100))
-    const handleQuantityPlus = () => {
-        if (quantity >= 1) {
-            setQuantity(quantity + 1)
-        }
-        return;
-    }
-    const handleQuantityMinus = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1)
-        }
-        return;
-    }
 
-    const handleAddToCard = (product) => {
-        const { brand, model, ram, rom, color, processor, battery, fastCharging, system, screen, camera, touchScreen, price, discound, image
-        } = product;
-        const data = {
-            brand,
-            model,
-            ram,
-            rom,
-            color,
-            processor,
-            battery,
-            fastCharging,
-            system,
-            screen,
-            camera,
-            touchScreen,
-            price,
-            discound,
-            image
-        }
-        addToCard({ ...data, quantity, email })
-    }
-
-    useEffect(() => {
-        if (addCard?.status) {
-            toast.success('Add To Card Success', { id: 'img' })
-        }
-
-        if (addCard?.message) {
-            toast.error(addCard?.message, { id: 'img' })
-        }
-    }, [addCard])
-
-
-
+    console.log(data)
     return (
         <div>
             <div className='flex justify-around flex-col md:flex-row  my-10 p-5'>
@@ -80,17 +31,10 @@ const ProductDetails = () => {
                     <h5 className='border-t-2 border-gray-400 font-semibold'>Touch Screen: {data?.touchScreen}</h5>
                     <h5 className='border-t-2 border-gray-400 font-semibold'>Discound Price: <span className='text-[#008000]'>BDT {parseInt(discoundPrice)}</span></h5>
                     <h5 className='border-t-2 border-gray-400 font-semibold'>Original Price: BDT <span className='line-through'>{originPrice}</span> <span>-{data?.discound}%</span></h5>
-                    <div className='flex justify-start items-center border-t-2 border-gray-400'>
-                        <h5 className=' font-semibold'>Quantity: </h5>
-                        <div className='my-3 flex justify-between'>
-                            <button onClick={handleQuantityMinus} className='bg-white px-5 py-1 rounded mx-2 '><AiOutlineMinus /></button>
-                            <p className='font-semibold'>{quantity}</p>
-                            <button onClick={handleQuantityPlus} className='bg-white px-5 py-1 rounded  mx-2'><AiOutlinePlus /></button>
-                        </div>
-                    </div>
+                    <h5 className='border-t-2 border-gray-400 font-semibold'>Quantity: {data?.quantity}</h5>
+
                     <div className='my-3 grid grid-cols-1 md:grid-cols-2 gap-5'>
                         <button className='bg-indigo-500 px-5 py-1 rounded text-white '>Buy Now</button>
-                        <button onClick={() => handleAddToCard(data)} className='bg-[#008000] px-5 py-1 rounded text-white'>Add to card</button>
                     </div>
                 </div>
             </div>
@@ -99,4 +43,4 @@ const ProductDetails = () => {
     );
 };
 
-export default ProductDetails;
+export default CardDetails;

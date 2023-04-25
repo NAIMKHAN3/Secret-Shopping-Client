@@ -5,6 +5,7 @@ import Login from "../Pages/Login/Login";
 import Deshboard from "../Layout/Deshboard/Deshboard";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import Products from "../Pages/Products/Products";
+import ProductDetails from "../Pages/Products/ProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/login', element: <Login />
+            },
+            {
+                path: '/product-details/:_id', element: <ProductDetails />
             }
         ]
     },

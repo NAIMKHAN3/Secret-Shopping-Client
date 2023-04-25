@@ -1,11 +1,16 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../app/features/products/productApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCard } from '../../app/features/card/cardSlice';
 
 const ProductDetails = () => {
     const { _id } = useParams();
     const { data: product } = useGetProductByIdQuery(_id)
-    const { data } = product || {}
+    const { data } = product || {};
+    const card = useSelector(state => state.card?.card);
+    const dispatch = useDispatch()
+    console.log(card)
     return (
         <div>
             <div className='flex justify-around  my-10'>
@@ -24,7 +29,7 @@ const ProductDetails = () => {
                     <h5 className='border-t-2 border-gray-400 font-semibold'>Touch Screen: {data?.touchScreen}</h5>
                     <div className='my-3 grid grid-cols-1 md:grid-cols-2'>
                         <button className='bg-indigo-500 px-5 py-1 rounded text-white mr-2'>Buy Now</button>
-                        <button className='bg-[#008000] px-5 py-1 rounded text-white ml-2'>Add to card</button>
+                        <button onClick={() => dispatch(addToCard(data))} className='bg-[#008000] px-5 py-1 rounded text-white ml-2'>Add to card</button>
                     </div>
                 </div>
             </div>

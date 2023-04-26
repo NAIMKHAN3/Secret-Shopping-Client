@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetCardProductByIdQuery } from '../../app/features/products/productApi';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
@@ -34,7 +34,7 @@ const CardDetails = () => {
                     <h5 className='border-t-2 border-gray-400 font-semibold'>Quantity: {data?.quantity}</h5>
 
                     <div className='my-3 grid grid-cols-1 md:grid-cols-2 gap-5'>
-                        <button className='bg-indigo-500 px-5 py-1 rounded text-white '>Buy Now</button>
+                        <Link to={`/payment/${data?._id}`}><button className='bg-indigo-500 px-5 py-1 rounded text-white '>Buy Now</button></Link>
                     </div>
                 </div>
             </div>

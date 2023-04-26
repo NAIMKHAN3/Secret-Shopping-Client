@@ -7,6 +7,7 @@ const apiSlice = createApi({
             "Content-Type": "application/json",
         },
     }),
+    tagTypes: ["PRODUCTS"],
     endpoints: (builder) => ({}),
 })
 

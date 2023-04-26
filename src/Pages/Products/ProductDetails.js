@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAddToCardMutation, useGetProductByIdQuery } from '../../app/features/products/productApi';
 import { useSelector } from 'react-redux';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
@@ -89,7 +89,7 @@ const ProductDetails = () => {
                         </div>
                     </div>
                     <div className='my-3 grid grid-cols-1 md:grid-cols-2 gap-5'>
-                        <button className='bg-indigo-500 px-5 py-1 rounded text-white '>Buy Now</button>
+                        <Link to={`/direct-payment/${data?._id}`}><button className='bg-indigo-500 px-5 py-1 rounded text-white '>Buy Now</button></Link>
                         <button onClick={() => handleAddToCard(data)} className='bg-[#008000] px-5 py-1 rounded text-white'>Add to card</button>
                     </div>
                 </div>

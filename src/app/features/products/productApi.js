@@ -28,13 +28,15 @@ const productApi = apiSlice.injectEndpoints({
             query: (email) => ({
                 url: `/card-products/${email}`,
             }),
+            providesTags: ["PRODUCTS"]
         }),
         addToCard: builder.mutation({
             query: (product) => ({
                 url: '/add-to-card',
                 method: 'POST',
                 body: product
-            })
+            }),
+            invalidatesTags: ["PRODUCTS"],
         })
     }),
 });

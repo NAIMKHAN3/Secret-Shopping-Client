@@ -5,6 +5,7 @@ const apiSlice = createApi({
         baseUrl: "http://localhost:5000",
         headers: {
             "Content-Type": "application/json",
+            authorization: `bearer ${localStorage.getItem('token')}`
         },
     }),
     tagTypes: ["PRODUCTS"],

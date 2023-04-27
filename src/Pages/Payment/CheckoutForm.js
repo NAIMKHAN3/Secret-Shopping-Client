@@ -28,7 +28,10 @@ const CheckoutForm = ({ data }) => {
         // Create PaymentIntent as soon as the page loads
         fetch("http://localhost:5000/create-payment-intent", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `bearer ${localStorage.getItem('token')}`
+            },
             body: JSON.stringify({ totalAmount }),
         })
             .then((res) => res.json())

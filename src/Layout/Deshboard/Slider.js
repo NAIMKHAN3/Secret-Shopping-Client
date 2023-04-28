@@ -9,27 +9,7 @@ const Slider = ({ isOpen }) => {
                 <li className='my-1  hover:bg-[#008000] px-2 py-1 rounded'>
                     <Link to='/deshboard/add-product'>Add Product</Link>
                 </li>
-                <li className='my-1 hover:bg-[#008000] px-2 py-1 rounded'>
-                    <Link to='/deshboard/all-products'>All Products</Link>
-                </li>
-                <li className='my-1 hover:bg-[#008000] px-2 py-1 rounded'>
-                    <Link to='/deshboard/i-phone'>i-Phone</Link>
-                </li>
-                <li className='my-1 hover:bg-[#008000] px-2 py-1 rounded'>
-                    <Link to='/deshboard/vivo'>Vivo</Link>
-                </li>
-                <li className='my-1 hover:bg-[#008000] px-2 py-1 rounded'>
-                    <Link to='/deshboard/oppo'>Oppo</Link>
-                </li>
-                <li className='my-1 hover:bg-[#008000] px-2 py-1 rounded'>
-                    <Link to='/deshboard/symphony'>Symphony</Link>
-                </li>
-                <li className='my-1 hover:bg-[#008000] px-2 py-1 rounded'>
-                    <Link to='/deshboard/xiaomi'>Xiaomi</Link>
-                </li>
-                <li className='my-1 hover:bg-[#008000] px-2 py-1 rounded'>
-                    <Link to='/deshboard/huawei'>Huawei</Link>
-                </li>
+
                 <li className='mt-auto hover:bg-[#008000] px-2 py-1 rounded'>
                     <Link to='/'>Back to home</Link>
                 </li>

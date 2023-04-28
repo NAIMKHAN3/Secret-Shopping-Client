@@ -37,8 +37,11 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
+        loading: (state, action) => {
+            state.isLoading = false;
+        },
         setUser: (state, action) => {
-            state.email = action.payload;
+            state.user.email = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -124,13 +127,15 @@ const authSlice = createSlice({
                 toast.error(action.error.message)
             })
             .addCase(getUserByEmail.pending, (state) => {
-                state.user.email = "";
                 state.isLoading = true;
                 state.isError = false;
                 state.error = ""
             })
             .addCase(getUserByEmail.fulfilled, (state, { payload }) => {
-                state.user = payload;
+                if (payload) {
+                    state.user = payload;
+                }
+
                 state.isLoading = false;
                 state.isError = false;
                 state.error = ""
@@ -145,5 +150,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { setUser } = authSlice.actions;
+export const { loading, setUser } = authSlice.actions;
 export default authSlice.reducer;

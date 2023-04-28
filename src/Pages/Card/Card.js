@@ -9,18 +9,16 @@ const Card = () => {
     const { data, isLoading } = useGetAddToCardProductsQuery(email)
     const products = data?.data || [];
     console.log(products)
-    useEffect(() => {
 
-    }, [data])
 
     if (isLoading) {
         return <h1 className='text-center font-semibold'>Loading...</h1>
     }
-    if (!products.lentgh) {
-        <h1>Please Add to card <Link to='/all-products'><span>Product</span></Link></h1>
-    }
-    else {
-        return
+    console.log(products.length)
+    if (!products.length) {
+        return <div className='flex justify-center items-center h-[400px]'>
+            <h1 className=' text-3xl font-semibold text-center'>Please Add to card <br /><Link to='/all-products'><span className='text-indigo-600'>Products</span></Link></h1>
+        </div>
     }
 
     return (

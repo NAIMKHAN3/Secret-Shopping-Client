@@ -8,7 +8,7 @@ const AdminRoute = ({ children }) => {
     const location = useLocation();
 
     if (isLoading) {
-        return <h1>loading.....</h1>
+        return <h1 className='text-center text-2xl'>Loading.....</h1>
     }
 
     if (email && role === 'admin') {

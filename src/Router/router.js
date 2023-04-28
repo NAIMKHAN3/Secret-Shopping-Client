@@ -13,6 +13,7 @@ import DirectPayment from "../Pages/Payment/DirectPayment";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import AdminRoute from "../Pages/PrivateRoute/AdminRoute";
 import Home from "../Pages/Home/Home";
+import Contact from "../Pages/Contact/Contact";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/home', element: <Home />
+            },
+            {
+                path: '/contact', element: <Contact />
             },
             {
                 path: '/all-products', element: <Products />

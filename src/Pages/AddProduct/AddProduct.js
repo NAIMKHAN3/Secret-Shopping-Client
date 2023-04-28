@@ -58,7 +58,7 @@ const AddProduct = () => {
                             <option value='iphone'>iPhone</option>
                             <option value='Vivo'>Vivo</option>
                             <option value='Oppo'>Oppo</option>
-                            <option value='samsung'>Samsung</option>
+                            <option value='Samsung'>Samsung</option>
                             <option value='Xiaomi'>Xiaomi</option>
                             <option value='Huawei'>Huawei</option>
                         </select>

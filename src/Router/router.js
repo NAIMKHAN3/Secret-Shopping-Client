@@ -10,10 +10,19 @@ import Card from "../Pages/Card/Card";
 import CardDetails from "../Pages/Card/CardDetails";
 import Payment from "../Pages/Payment/Payment";
 import DirectPayment from "../Pages/Payment/DirectPayment";
+import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
+import AdminRoute from "../Pages/PrivateRoute/AdminRoute";
+import Home from "../Pages/Home/Home";
 
 const router = createBrowserRouter([
     {
         path: '/', element: <Main />, children: [
+            {
+                path: '/', element: <Home />
+            },
+            {
+                path: '/home', element: <Home />
+            },
             {
                 path: '/all-products', element: <Products />
             },
@@ -24,24 +33,24 @@ const router = createBrowserRouter([
                 path: '/login', element: <Login />
             },
             {
-                path: '/product-details/:_id', element: <ProductDetails />
+                path: '/product-details/:_id', element: <PrivateRoute><ProductDetails /></PrivateRoute>
             },
             {
-                path: '/direct-payment/:id', element: <DirectPayment />
+                path: '/direct-payment/:id', element: <PrivateRoute><DirectPayment /></PrivateRoute>
             },
             {
-                path: '/card', element: <Card />
+                path: '/card', element: <PrivateRoute><Card /></PrivateRoute>
             },
             {
-                path: '/card-details/:_id', element: <CardDetails />
+                path: '/card-details/:_id', element: <PrivateRoute><CardDetails /></PrivateRoute>
             },
             {
-                path: '/payment/:id', element: <Payment />
+                path: '/payment/:id', element: <PrivateRoute><Payment /></PrivateRoute>
             },
         ]
     },
     {
-        path: '/deshboard', element: <Deshboard />, children: [
+        path: '/deshboard', element: <PrivateRoute><AdminRoute><Deshboard /></AdminRoute></PrivateRoute>, children: [
             {
                 path: '/deshboard/add-product', element: <AddProduct />
             }

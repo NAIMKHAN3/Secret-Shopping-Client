@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Slider = ({ isOpen }) => {
     return (
-        <div className={`col-span-2  fixed bg-[#333533] ${!isOpen ? 'lg:left-3' : 'left-3'} transition duration-700  z-20 left-[-250px] h-[calc(100vh-25px)] p-5 rounded-lg`}>
+        <div className={`col-span-2  fixed bg-[#333533] ${!isOpen ? 'left-[-250px] lg:left-3' : 'left-3'} transition duration-700  z-20  h-[calc(100vh-25px)] p-5 rounded-lg`}>
             <ul className='flex flex-col h-full text-white  font-semibold'>
                 <li className='font-semibold text-[#15f815] my-5'>Admin Deshboard</li>
                 <li className='my-1  hover:bg-[#008000] px-2 py-1 rounded'>

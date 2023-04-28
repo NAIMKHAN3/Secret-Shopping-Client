@@ -13,7 +13,7 @@ const Deshboard = () => {
         <div>
             <div className='lg:hidden'>
                 {
-                    isOpen ? <span className='flex justify-start fixed top-2  z-30 items-center w-[84px] mt-3 ml-6 bg-[#333533] text-white px-2 py-1 cursor-pointer rounded hover:bg-[#008000]' onClick={toggleIsOpen}> <span><ImCross className='text-xs  mr-1' /></span> Menu</span> :
+                    isOpen ? <span className='flex justify-start fixed top-2  z-30 items-center w-[84px] mt-3 ml-3 bg-[#333533] text-white px-2 py-1 cursor-pointer rounded hover:bg-[#008000]' onClick={toggleIsOpen}> <span><ImCross className='text-xs  mr-1' /></span> Menu</span> :
                         <div className='bg-neutral-200 w-full'><p className='flex w-[84px] mt-3 ml-3 fixed top-2  z-30 justify-start items-center bg-[#333533] text-white px-2 py-1 rounded hover:bg-[#008000] cursor-pointer' onClick={toggleIsOpen}><span><AiOutlineMenu className='text-xs mr-1' /></span> Menu</p></div>
                 }
             </div>

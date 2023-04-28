@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
     return (
         <div>
             <Link to={`/product-details/${_id}`}>
-                <div className='hover:border border-[black] bg-white rounded-2xl  cursor-pointer mx-auto'>
+                <div className='hover:border border-gray-400 bg-white rounded-2xl  cursor-pointer mx-auto'>
                     <img className='p-3 w-80 h-96' src={image} alt="" />
                     <div className='p-3'>
                         <h1 className='font-semibold'>{brand} {model}</h1>

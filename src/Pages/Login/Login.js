@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { googleLogin, loginUser } from '../../app/features/auth/authSlice';
 import { useRegisterUserMutation } from '../../app/features/user/userApi';
@@ -9,18 +9,24 @@ const Login = () => {
     const dispatch = useDispatch();
     const [registerUser, { data }] = useRegisterUserMutation();
     const { register, handleSubmit } = useForm();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    const navigate = useNavigate();
+
 
     const onSubmit = async ({ email, password }) => {
         const { payload } = await dispatch(loginUser({ email, password }))
         if (payload) {
             registerUser({ email: payload })
+            navigate(from, { replace: true })
         }
     };
 
     const handleGoogle = async () => {
         const { payload } = await dispatch(googleLogin())
         if (payload) {
-            registerUser({ email: payload })
+            registerUser({ email: payload, role: "user" })
+            navigate(from, { replace: true })
         }
     }
 

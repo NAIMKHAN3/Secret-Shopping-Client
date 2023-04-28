@@ -10,9 +10,13 @@ import { logOut } from '../app/features/auth/authSlice';
 
 
 const Navbar = () => {
-    const { email } = useSelector((state) => state.auth);
+    const { user: { email }, isLoading } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState(false);
+
+    if (isLoading) {
+        return
+    }
     const toggleIsOpen = () => {
         setIsOpen(value => !value)
     }
@@ -23,12 +27,10 @@ const Navbar = () => {
     const navItem = 'text-sm md:ml-4 text-white mb-1 hover:bg-[#008000] px-5 py-2 rounded-full cursor-pointer font-semibold transition duration-500'
     const item = <ul className='flex md:items-center flex-col lg:flex-row md:justify-center'>
 
-        <li className={`${navItem}`}>Home</li>
+        <Link to='/home' className={`${navItem}`}>Home</Link>
         <Link to='/all-products' className={`${navItem}`}>All Products</Link>
-        <li className={`${navItem}`}>Services</li>
         <Link to='/deshboard' className={`${navItem}`}>Deshboard</Link>
         <Link to='/card' className={`${navItem}`}>Card</Link>
-        <li className={`${navItem}`}>Billing</li>
         <li className={`${navItem}`}>Contact</li>
 
 

@@ -9,7 +9,7 @@ const ProductDetails = () => {
     const { _id } = useParams();
     const { data: product } = useGetProductByIdQuery(_id)
     const { data } = product || {};
-    const email = useSelector(state => state.auth.email);
+    const email = useSelector(state => state.auth.user.email);
     const [addToCard, { data: addCard }] = useAddToCardMutation();
     const [quantity, setQuantity] = useState(1);
     const originPrice = parseInt(data?.price)

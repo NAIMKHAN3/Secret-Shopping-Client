@@ -8,7 +8,7 @@ const CardDetails = () => {
     const { _id } = useParams();
     const { data: product } = useGetCardProductByIdQuery(_id)
     const { data } = product || {};
-    const email = useSelector(state => state.auth.email);
+    const email = useSelector(state => state.auth.user.email);
     const originPrice = parseInt(data?.price)
     const discoundPrice = originPrice - (originPrice * (parseInt(data?.discound) / 100))
 

@@ -4,9 +4,8 @@ import auth from "../../../Pages/Firebase/firebase.config";
 import { toast } from 'react-hot-toast'
 
 const initialState = {
-    email: "",
-    role: "",
-    isLoading: false,
+    user: { email: "", role: "" },
+    isLoading: true,
     isError: false,
     error: ""
 }
@@ -28,6 +27,11 @@ export const logOut = createAsyncThunk("auth/logOut", async () => {
     const data = await signOut(auth);
     return data;
 })
+export const getUserByEmail = createAsyncThunk("auth/getUserByEmail", async (email) => {
+    const res = await fetch(`http://localhost:5000/user/${email}`)
+    const data = await res.json();
+    return data.data;
+})
 
 const authSlice = createSlice({
     name: 'auth',
@@ -39,46 +43,42 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(createUser.pending, (state) => {
-            state.email = "";
-            state.role = "";
+            state.user.email = "";
             state.isLoading = true;
             state.isError = false;
             state.error = ""
         })
             .addCase(createUser.fulfilled, (state, action) => {
-                state.email = action.payload;
-                state.role = "user";
+                state.user.email = action.payload;
+                state.user.role = "user";
                 state.isLoading = false;
                 state.isError = false;
                 state.error = "";
                 toast.success("Register Success")
             })
             .addCase(createUser.rejected, (state, action) => {
-                state.email = "";
-                state.role = "";
+                state.user.email = "";
                 state.isLoading = false;
                 state.isError = true;
                 state.error = action.error.message;
                 toast.error(action.error.message)
             })
             .addCase(loginUser.pending, (state) => {
-                state.email = "";
-                state.role = "";
+                state.user.email = "";
                 state.isLoading = true;
                 state.isError = false;
                 state.error = ""
             })
             .addCase(loginUser.fulfilled, (state, { payload }) => {
-                state.email = payload;
-                state.role = "user";
+                state.user.email = payload;
+                state.user.role = "user";
                 state.isLoading = false;
                 state.isError = false;
                 state.error = "";
                 toast.success("Login user success")
             })
             .addCase(loginUser.rejected, (state, action) => {
-                state.email = "";
-                state.role = "";
+                state.user.email = "";
                 state.isLoading = false;
                 state.isError = true;
                 state.error = action.error.message;
@@ -90,38 +90,53 @@ const authSlice = createSlice({
                 state.error = ""
             })
             .addCase(googleLogin.fulfilled, (state, action) => {
-                state.email = action.payload;
-                state.role = "user";
+                state.user.email = action.payload;
+                state.user.role = "user";
                 state.isLoading = false;
                 state.isError = false;
                 state.error = "";
                 toast.success("Google login Success")
             })
             .addCase(googleLogin.rejected, (state, action) => {
-                state.email = "";
-                state.role = "";
+                state.user.email = "";
                 state.isLoading = false;
                 state.isError = true;
                 state.error = action.error.message;
             })
             .addCase(logOut.pending, (state) => {
-                state.email = "";
-                state.role = "";
+                state.user.email = "";
                 state.isLoading = true;
                 state.isError = false;
                 state.error = ""
             })
             .addCase(logOut.fulfilled, (state) => {
-                state.email = "";
-                state.role = "";
+                state.user.email = "";
                 state.isLoading = false;
                 state.isError = false;
                 state.error = ""
                 toast.success("Successfully sign out")
             })
             .addCase(logOut.rejected, (state, action) => {
-                state.email = "";
-                state.role = "";
+                state.user.email = "";
+                state.isLoading = false;
+                state.isError = true;
+                state.error = action.error.message;
+                toast.error(action.error.message)
+            })
+            .addCase(getUserByEmail.pending, (state) => {
+                state.user.email = "";
+                state.isLoading = true;
+                state.isError = false;
+                state.error = ""
+            })
+            .addCase(getUserByEmail.fulfilled, (state, { payload }) => {
+                state.user = payload;
+                state.isLoading = false;
+                state.isError = false;
+                state.error = ""
+            })
+            .addCase(getUserByEmail.rejected, (state, action) => {
+                state.user.email = "";
                 state.isLoading = false;
                 state.isError = true;
                 state.error = action.error.message;

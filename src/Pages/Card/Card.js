@@ -5,7 +5,7 @@ import CardProduct from './CardProduct';
 import { Link } from 'react-router-dom';
 
 const Card = () => {
-    const email = useSelector(state => state.auth.email);
+    const email = useSelector(state => state.auth.user.email);
     const { data, isLoading } = useGetAddToCardProductsQuery(email)
     const products = data?.data || [];
     console.log(products)

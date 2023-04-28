@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
 
 const CheckoutForm = ({ data }) => {
-    const email = useSelector(state => state.auth.email);
+    const email = useSelector(state => state.auth.user.email);
     const originPrice = parseInt(data?.price)
     let quantity;
     if (data?.quantity) {

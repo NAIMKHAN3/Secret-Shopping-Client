@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className='p-3 md:grid grid-cols-2 flex flex-col-reverse max-w-6xl mx-auto my-10'>
+        <div className='p-3 md:grid grid-cols-2 flex flex-col-reverse max-w-6xl mx-auto my-10' data-aos="fade-up" data-aos-duration="1000">
             <div className='flex justify-center items-center'>
                 <div>
                     <h1 className='text-xl md:text-4xl font-bold my-10'>IPHONE 14 PRO MAX is here</h1>

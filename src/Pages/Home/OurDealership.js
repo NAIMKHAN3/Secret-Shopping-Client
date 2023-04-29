@@ -2,7 +2,7 @@ import React from 'react';
 
 const OurDealership = () => {
     return (
-        <div className='max-w-6xl mx-auto p-3 my-10'>
+        <div className='max-w-6xl mx-auto p-3 my-10' data-aos="fade-up" data-aos-duration="1000">
             <h1 className='text-[#008000] text-4xl text-center font-semibold my-10'>OUR DEALERSHIP </h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 <img className='w-full md:w-72 md:h-64 mx-auto cursor-pointer rounded-md' src="https://1000logos.net/wp-content/uploads/2017/02/Symbol-of-the-iPhone-logo.jpg" alt="" />

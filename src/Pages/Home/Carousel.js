@@ -34,7 +34,7 @@ const Carousel = () => {
 
     ]
     return (
-        <div className='p-3'>
+        <div className='p-3' data-aos="fade-up" data-aos-duration="1000">
             <h1 className='text-[#008000] text-4xl text-center font-semibold'>SPECIAL DISCOUND</h1>
             <Swiper
                 cssMode={true}
@@ -47,7 +47,7 @@ const Carousel = () => {
                     disableOnInteraction: false,
                 }}
                 modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
-                className="mySwiper max-w-5xl md:w-[900px] my-10 p-20"
+                className="mySwiper max-w-5xl lg:w-[900px] my-10"
             >
                 {
                     popularCollection.map(collection => <SwiperSlide><div className='flex justify-center items-center bg-white rounded-md p-3 md:p-20'>

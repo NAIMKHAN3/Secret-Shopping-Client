@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
@@ -7,18 +7,18 @@ import { useRegisterUserMutation } from '../../app/features/user/userApi';
 
 const Login = () => {
     const dispatch = useDispatch();
-    const [registerUser, { data }] = useRegisterUserMutation();
+    const [registerUser, { data, isLoading, isSuccess }] = useRegisterUserMutation();
     const { register, handleSubmit } = useForm();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
 
 
+
     const onSubmit = async ({ email, password }) => {
         const { payload } = await dispatch(loginUser({ email, password }))
         if (payload) {
             registerUser({ email: payload })
-            navigate(from, { replace: true })
         }
     };
 
@@ -26,16 +26,21 @@ const Login = () => {
         const { payload } = await dispatch(googleLogin())
         if (payload) {
             registerUser({ email: payload, role: "user" })
-            navigate(from, { replace: true })
         }
     }
 
-    if (data?.token) {
+
+
+    if (isSuccess && data?.token) {
         localStorage.setItem('token', data?.token)
+        navigate(from, { replace: true })
     }
 
+
+
+
     return (
-        <div className='w-full md:w-1/3 mx-auto my-10 p-5 border rounded border-[#008000]'>
+        <div className='w-full md:w-1/3 mx-auto my-10 p-5 border rounded border-[#008000]' data-aos="fade-up" data-aos-duration="1000">
             <h1 className='text-center text-3xl font-semibold text-[#008000] my-10'>Login User</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='my-2'>

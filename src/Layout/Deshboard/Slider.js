@@ -9,7 +9,6 @@ const Slider = ({ isOpen }) => {
                 <li className='my-1  hover:bg-[#008000] px-2 py-1 rounded'>
                     <Link to='/deshboard/add-product'>Add Product</Link>
                 </li>
-
                 <li className='mt-auto hover:bg-[#008000] px-2 py-1 rounded'>
                     <Link to='/'>Back to home</Link>
                 </li>

@@ -19,7 +19,6 @@ const Register = () => {
         dispatch(createUser({ email, password }))
             .then(() => {
                 registerUser({ name, email, role: "user" })
-                navigate(from, { replace: true })
             })
     };
 
@@ -27,17 +26,18 @@ const Register = () => {
         const { payload } = await dispatch(googleLogin())
         if (payload) {
             registerUser({ email: payload, role: "user" })
-            navigate(from, { replace: true })
+
         }
 
     }
 
     if (data?.token) {
         localStorage.setItem('token', data?.token)
+        navigate(from, { replace: true })
     }
 
     return (
-        <div className='w-full md:w-1/3  mx-auto my-10 p-5 border rounded border-[#008000]'>
+        <div className='w-full md:w-1/3  mx-auto my-10 p-5 border rounded border-[#008000]' data-aos="fade-up" data-aos-duration="1000">
             <h1 className='text-center text-3xl font-semibold text-[#008000] mb-10'>Register User</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='my-2'>

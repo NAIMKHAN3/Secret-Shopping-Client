@@ -7,7 +7,7 @@ const CardProduct = ({ product }) => {
     const discoundPrice = originPrice - (originPrice * (parseInt(discound) / 100))
 
     return (
-        <div className='flex justify-center'>
+        <div className='flex justify-center' data-aos="fade-up" data-aos-duration="1000">
             <Link to={`/card-details/${_id}`}>
                 <div className='hover:border border-[black] bg-white rounded-2xl  cursor-pointer mx-auto'>
                     <img className='p-3 w-80 h-96' src={image} alt="" />

@@ -28,7 +28,7 @@ export const logOut = createAsyncThunk("auth/logOut", async () => {
     return data;
 })
 export const getUserByEmail = createAsyncThunk("auth/getUserByEmail", async (email) => {
-    const res = await fetch(`http://localhost:5000/user/${email}`)
+    const res = await fetch(`https://secure-shopping-server.vercel.app/user/${email}`)
     const data = await res.json();
     return data.data;
 })

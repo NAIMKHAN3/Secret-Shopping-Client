@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:5000",
+        baseUrl: "https://secure-shopping-server.vercel.app",
         headers: {
             "Content-Type": "application/json",
             authorization: `bearer ${localStorage.getItem('token')}`

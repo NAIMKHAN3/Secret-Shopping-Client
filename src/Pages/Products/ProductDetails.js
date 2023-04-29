@@ -63,7 +63,7 @@ const ProductDetails = () => {
 
 
     return (
-        <div>
+        <div data-aos="fade-up" data-aos-duration="1000">
             <div className='flex justify-around flex-col md:flex-row  my-10 p-5'>
                 <img className='w-[250px] mx-auto md:w-[300px] md:h-[400px] rounded-xl' src={data?.image} alt="" />
                 <div>

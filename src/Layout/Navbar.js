@@ -39,12 +39,12 @@ const Navbar = () => {
 
     </ul>
     return (
-        <div className='mb-10'>
+        <div className='mb-10' >
             <div className='flex justify-end px-5 md:px-10 py-1'>
                 {
-                    email ? <button onClick={signOut} className='font-bold text-sm bg-[#bf0603] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><CgLogOut /></span>Sign Out</button> :
-                        <><Link to="/login"><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><FiLogIn /></span> Login</button></Link>
-                            <Link to='/register'><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center'> <span className='text-sm mr-1 font-bold'><FaUserPlus /></span> Register</button></Link></>
+                    email ? <button onClick={signOut} className='font-bold text-sm bg-[#bf0603] text-white py-1 px-2 rounded mr-3 flex justify-center items-center' data-aos="fade-right" data-aos-duration="1500"> <span className='text-sm mr-1 font-bold'><CgLogOut /></span>Sign Out</button> :
+                        <><Link to="/login"><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center' data-aos="fade-right" data-aos-duration="1500"> <span className='text-sm mr-1 font-bold'><FiLogIn /></span> Login</button></Link>
+                            <Link to='/register'><button className='font-bold text-sm bg-[#008000] text-white py-1 px-2 rounded mr-3 flex justify-center items-center' data-aos="fade-left" data-aos-duration="1500"> <span className='text-sm mr-1 font-bold'><FaUserPlus /></span> Register</button></Link></>
                 }
 
 

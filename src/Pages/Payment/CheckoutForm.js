@@ -26,7 +26,7 @@ const CheckoutForm = ({ data }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://secure-shopping-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -103,10 +103,10 @@ const CheckoutForm = ({ data }) => {
     }
     console.log(errorConfirm)
     return (
-        <>
+        < >
             <h1 className='text-center font-bold text-[#008000] text-xl'>Payment Page {data?.brand} {data?.model}</h1>
             <h1 className='text-center font-bold text-[#008000] text-xl'>Amount: BDT {totalAmount}</h1>
-            <form onSubmit={handleSubmit} className='max-w-3xl mx-auto my-10 p-3'>
+            <form onSubmit={handleSubmit} className='max-w-3xl mx-auto my-10 p-3' data-aos="fade-up" data-aos-duration="1000">
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
 
                     <div className='my-2 w-full'>
